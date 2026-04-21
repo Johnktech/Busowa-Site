@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us | St. Antony Busowa Primary School</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center; }
+.two-col.flip { }
+
+.history-timeline { position:relative; padding-left:40px; }
+.history-timeline::before {
+  content:''; position:absolute; left:10px; top:0; bottom:0;
+  width:2px; background:linear-gradient(to bottom, var(--earth), var(--amber));
+}
+.timeline-item { position:relative; margin-bottom:44px; }
+.timeline-item:last-child { margin-bottom:0; }
+.timeline-dot {
+  position:absolute; left:-36px; top:4px;
+  width:14px; height:14px; border-radius:50%;
+  background:var(--earth); border:3px solid var(--cream);
+  box-shadow:0 0 0 2px var(--earth);
+}
+.timeline-year {
+  font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase;
+  color:var(--amber); font-weight:600; margin-bottom:6px;
+}
+.timeline-title {
+  font-family:'Playfair Display',serif;
+  font-size:1.05rem; font-weight:700; color:var(--dark); margin-bottom:8px;
+}
+.timeline-text { font-size:0.87rem; line-height:1.7; color:var(--mid); font-weight:300; }
+
+.value-card {
+  background:#fff; border-radius:3px;
+  border:1px solid var(--border);
+  padding:32px 28px;
+  transition:transform 0.2s, box-shadow 0.2s;
+  position:relative; overflow:hidden;
+}
+.value-card::after {
+  content:''; position:absolute; bottom:0; left:0; right:0;
+  height:3px; background:linear-gradient(90deg, var(--earth), var(--amber));
+  transform:scaleX(0); transition:transform 0.25s;
+  transform-origin:left;
+}
+.value-card:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,0.07); }
+.value-card:hover::after { transform:scaleX(1); }
+.value-icon { font-size:1.8rem; margin-bottom:14px; }
+.value-title { font-family:'Playfair Display',serif; font-size:1.05rem; font-weight:700; color:var(--dark); margin-bottom:10px; }
+.value-text { font-size:0.85rem; line-height:1.7; color:var(--mid); font-weight:300; }
+
+.staff-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.staff-card {
+  background:#fff; border-radius:3px;
+  border:1px solid var(--border); overflow:hidden;
+  text-align:center; padding:32px 20px;
+  transition:transform 0.2s;
+}
+.staff-card:hover { transform:translateY(-4px); }
+.staff-avatar {
+  width:72px; height:72px; border-radius:50%;
+  background:var(--cream-dark);
+  margin:0 auto 16px;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700;
+  color:var(--earth);
+  border:3px solid var(--border);
+}
+.staff-name { font-family:'Playfair Display',serif; font-size:0.97rem; font-weight:700; color:var(--dark); margin-bottom:5px; }
+.staff-role { font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--amber); }
+.staff-note { font-size:0.8rem; color:var(--mid); margin-top:8px; font-weight:300; }
+
+.facts-band {
+  background:var(--dark); padding:72px 0;
+}
+.facts-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:0; }
+.fact-item {
+  padding:32px 24px; border-right:1px solid rgba(255,255,255,0.06);
+  text-align:center;
+}
+.fact-item:last-child { border-right:none; }
+.fact-val { font-family:'Playfair Display',serif; font-size:2.2rem; font-weight:900; color:var(--gold); line-height:1; margin-bottom:8px; }
+.fact-label { font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.4); }
+
+@media (max-width:960px) {
+  .two-col { grid-template-columns:1fr; gap:48px; }
+  .staff-grid { grid-template-columns:1fr 1fr; }
+  .facts-grid { grid-template-columns:1fr 1fr; }
+  .fact-item:nth-child(2) { border-right:none; }
+  .fact-item:nth-child(4) { border-right:none; }
+}
+@media (max-width:600px) {
+  .staff-grid { grid-template-columns:1fr; }
+  .facts-grid { grid-template-columns:1fr 1fr; }
+}
+</style>
+</head>
+<body data-page="about">
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-pattern"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-eyebrow">About Us</div>
+    <h1 class="page-hero-title">Eight decades of<br><em>education & faith.</em></h1>
+    <p class="page-hero-sub">The story of St. Antony Busowa Primary School — from a small parish mission in 1945 to a thriving school serving 1,000 children today.</p>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section class="section" style="background:#fff;">
+  <div class="container">
+    <div class="two-col fade-up">
+      <div>
+        <div class="eyebrow">Our Story</div>
+        <h2 class="section-title">A school built by<br><em>a community, for<br>a community.</em></h2>
+        <p class="lead" style="margin-bottom:20px;">St. Antony Busowa Primary School was born from the conviction of Busowa Catholic Parish — that education is not a privilege but a right, and that every child in this corner of Eastern Uganda deserves a foundation for life.</p>
+        <p style="font-size:0.97rem;line-height:1.8;color:var(--mid);font-weight:300;">From Primary 1 through Primary 7, our 25 teachers guide 1,000 children through a curriculum that prepares them not just for national exams, but for life. We are located in Busowa Town-Council, Bugiri District — 170km from Kampala along the Uganda–Kenya highway.</p>
+      </div>
+      <div style="background:var(--cream-dark);aspect-ratio:4/3;border-radius:4px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:0.75rem;letter-spacing:0.1em;">SCHOOL PHOTO PLACEHOLDER</div>
+    </div>
+  </div>
+</section>
+
+<!-- FACTS BAND -->
+<div class="facts-band">
+  <div class="container">
+    <div class="facts-grid fade-up">
+      <div class="fact-item"><div class="fact-val">1945</div><div class="fact-label">Year founded</div></div>
+      <div class="fact-item"><div class="fact-val">1,000</div><div class="fact-label">Enrolled pupils</div></div>
+      <div class="fact-item"><div class="fact-val">25</div><div class="fact-label">Teachers</div></div>
+      <div class="fact-item"><div class="fact-val">P1–P7</div><div class="fact-label">Classes offered</div></div>
+      <div class="fact-item"><div class="fact-val">170km</div><div class="fact-label">From Kampala</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- HISTORY TIMELINE -->
+<section class="section" id="history">
+  <div class="container">
+    <div class="two-col">
+      <div class="fade-up">
+        <div class="eyebrow">Our History</div>
+        <h2 class="section-title">From mission post<br><em>to 1,000 students.</em></h2>
+        <p class="lead">Every brick in this school has a story. Here are the milestones that shaped St. Antony Busowa Primary School.</p>
+      </div>
+      <div class="history-timeline fade-up delay-1">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">1945</div>
+          <div class="timeline-title">Busowa Catholic Parish Founded</div>
+          <div class="timeline-text">The parish was established to serve the growing Catholic community of Busowa and surrounding villages, with education central to its mission from the very start.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">1950s – 1970s</div>
+          <div class="timeline-title">School Established & First Classrooms Built</div>
+          <div class="timeline-text">St. Antony Primary School opened its doors under parish leadership, designed to accommodate 350 pupils across seven classes of 50 children each.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">1990s – 2000s</div>
+          <div class="timeline-title">Government Free Primary Education Policy</div>
+          <div class="timeline-text">Uganda's Universal Primary Education program dramatically increased enrollment nationwide. Our school saw pupil numbers surge from 350 toward 1,000 — far exceeding original capacity.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2020s</div>
+          <div class="timeline-title">Parish Grows to Three Schools</div>
+          <div class="timeline-text">The parish now operates three schools across Bugiri District, serving a combined 3,000 learners — with St. Antony as the flagship institution.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:var(--amber);box-shadow:0 0 0 2px var(--amber);"></div>
+          <div class="timeline-year">2025 — Now</div>
+          <div class="timeline-title">New Four-Classroom Block</div>
+          <div class="timeline-text">We are building four new classrooms to decongest our overpopulated classes and restore quality education for 280 additional learners.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION & VALUES -->
+<section class="section" style="background:var(--cream-dark);" id="mission">
+  <div class="container">
+    <div style="text-align:center;max-width:620px;margin:0 auto 64px;" class="fade-up">
+      <div class="eyebrow center">Mission & Values</div>
+      <h2 class="section-title" style="text-align:center;">What we stand for,<br><em>every single day.</em></h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+      <div class="value-card fade-up">
+        <div class="value-icon">📚</div>
+        <div class="value-title">Quality Education</div>
+        <div class="value-text">We believe every child, regardless of economic background, deserves a rigorous, caring, and inspiring education that prepares them for life and national examinations.</div>
+      </div>
+      <div class="value-card fade-up delay-1">
+        <div class="value-icon">🤝</div>
+        <div class="value-title">Community Service</div>
+        <div class="value-text">Our school is inseparable from the Busowa community. We grow together — through parent involvement, parish leadership, and shared responsibility for every child's success.</div>
+      </div>
+      <div class="value-card fade-up delay-2">
+        <div class="value-icon">⚖️</div>
+        <div class="value-title">Human Dignity</div>
+        <div class="value-text">We respect and uphold the rights of every learner. No child is left behind because of poverty, distance, or family circumstance. The school stands as a place of safety and belonging.</div>
+      </div>
+      <div class="value-card fade-up">
+        <div class="value-icon">🌱</div>
+        <div class="value-title">Environmental Care</div>
+        <div class="value-text">We teach students to care for the land they live on. Tree planting, clean environment campaigns, and sustainability are woven into school life and the parish's wider mission.</div>
+      </div>
+      <div class="value-card fade-up delay-1">
+        <div class="value-icon">🕊️</div>
+        <div class="value-title">Peace & Reconciliation</div>
+        <div class="value-text">In a region where ethnic and economic tensions can run high, the school and parish actively promote peace-building, dialogue, and respect across all communities.</div>
+      </div>
+      <div class="value-card fade-up delay-2">
+        <div class="value-icon">🏗️</div>
+        <div class="value-title">Accountability</div>
+        <div class="value-text">Every project we undertake is supervised, reported on, and transparent. We manage donor resources with full financial accountability and photographic documentation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STAFF -->
+<section class="section" style="background:#fff;" id="staff">
+  <div class="container">
+    <div style="text-align:center;max-width:540px;margin:0 auto 56px;" class="fade-up">
+      <div class="eyebrow center">Our People</div>
+      <h2 class="section-title" style="text-align:center;">The teachers behind<br><em>every success story.</em></h2>
+      <p style="font-size:0.97rem;line-height:1.8;color:var(--mid);font-weight:300;margin-top:12px;">St. Antony is staffed by 25 qualified teachers, government-salaried and dedicated to each child's growth.</p>
+    </div>
+    <div class="staff-grid fade-up">
+      <div class="staff-card">
+        <div class="staff-avatar">HT</div>
+        <div class="staff-name">Head Teacher</div>
+        <div class="staff-role">School Leadership</div>
+        <div class="staff-note">Oversees curriculum, administration, and community relations</div>
+      </div>
+      <div class="staff-card">
+        <div class="staff-avatar">DC</div>
+        <div class="staff-name">Deputy Head</div>
+        <div class="staff-role">Academic Affairs</div>
+        <div class="staff-note">Coordinates all class teachers and academic programs</div>
+      </div>
+      <div class="staff-card">
+        <div class="staff-avatar">P1</div>
+        <div class="staff-name">Primary 1 & 2</div>
+        <div class="staff-role">Lower Primary</div>
+        <div class="staff-note">Foundation literacy and numeracy for ages 6–8</div>
+      </div>
+      <div class="staff-card">
+        <div class="staff-avatar">P3</div>
+        <div class="staff-name">Primary 3 & 4</div>
+        <div class="staff-role">Middle Primary</div>
+        <div class="staff-note">Building core skills and subject confidence</div>
+      </div>
+      <div class="staff-card">
+        <div class="staff-avatar">P5</div>
+        <div class="staff-name">Primary 5 & 6</div>
+        <div class="staff-role">Upper Primary</div>
+        <div class="staff-note">Preparing learners for national examinations</div>
+      </div>
+      <div class="staff-card">
+        <div class="staff-avatar">P7</div>
+        <div class="staff-name">Primary 7</div>
+        <div class="staff-role">Leaving Class</div>
+        <div class="staff-note">Final year exam preparation and secondary school transition</div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:40px;font-size:0.83rem;color:var(--muted);">All teachers are government-employed and receive monthly salaries of UGX 500,000 from the Ministry of Education.</p>
+  </div>
+</section>
+
+<script src="shared.js"></script>
+</body>
+</html>

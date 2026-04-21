@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Community & Parish | St. Antony Busowa Primary School</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center; }
+
+.program-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.program-card {
+  background:#fff; border-radius:3px; border:1px solid var(--border);
+  padding:32px 26px; transition:transform 0.2s, box-shadow 0.2s;
+  position:relative; overflow:hidden;
+}
+.program-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:3px;
+  background:linear-gradient(90deg, var(--earth), var(--amber));
+  transform:scaleX(0); transition:transform 0.25s; transform-origin:left;
+}
+.program-card:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,0.07); }
+.program-card:hover::before { transform:scaleX(1); }
+.program-icon { font-size:2rem; margin-bottom:16px; }
+.program-title { font-family:'Playfair Display',serif; font-size:1.05rem; font-weight:700; color:var(--dark); margin-bottom:10px; }
+.program-text { font-size:0.85rem; line-height:1.7; color:var(--mid); font-weight:300; }
+
+.map-band {
+  background:var(--dark); padding:80px 0; color:#fff;
+}
+.map-inner { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
+.map-placeholder {
+  aspect-ratio:4/3; background:rgba(255,255,255,0.04);
+  border-radius:3px; border:1px solid rgba(255,255,255,0.08);
+  display:flex; align-items:center; justify-content:center;
+  flex-direction:column; gap:12px; color:rgba(255,255,255,0.3);
+  font-size:0.8rem; letter-spacing:0.08em;
+}
+.map-placeholder-icon { font-size:2.4rem; opacity:0.3; }
+.location-item {
+  display:flex; gap:16px; margin-bottom:24px; align-items:flex-start;
+}
+.location-item:last-child { margin-bottom:0; }
+.location-icon {
+  width:44px; height:44px; border-radius:2px;
+  background:rgba(255,255,255,0.06);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.1rem; flex-shrink:0;
+}
+.location-label { font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--amber); margin-bottom:5px; font-weight:600; }
+.location-val { font-size:0.92rem; color:rgba(255,255,255,0.8); line-height:1.6; }
+
+.community-quote {
+  background:var(--earth); padding:72px 0; text-align:center;
+}
+.community-quote-inner { max-width:700px; margin:0 auto; padding:0 56px; }
+.cq-text {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.4rem,2.2vw,1.9rem);
+  font-style:italic; color:#fff; line-height:1.5; margin-bottom:20px;
+}
+.cq-author { font-size:0.77rem; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.45); }
+
+.schools-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.school-card {
+  background:#fff; border-radius:3px; border:1px solid var(--border);
+  overflow:hidden; transition:transform 0.2s;
+}
+.school-card:hover { transform:translateY(-4px); }
+.school-card-top {
+  padding:28px 24px 20px;
+  border-bottom:1px solid var(--border);
+}
+.school-card-num {
+  font-family:'Playfair Display',serif;
+  font-size:2.4rem; font-weight:900; color:var(--earth);
+  line-height:1; margin-bottom:4px;
+}
+.school-card-name { font-family:'Playfair Display',serif; font-size:0.97rem; font-weight:700; color:var(--dark); }
+.school-card-body { padding:20px 24px; }
+.school-card-detail { font-size:0.83rem; line-height:1.7; color:var(--mid); font-weight:300; }
+.school-card.featured { border-color:var(--earth); }
+.school-card.featured .school-card-top { background:var(--earth); }
+.school-card.featured .school-card-num,.school-card.featured .school-card-name { color:#fff; }
+
+@media (max-width:960px) {
+  .two-col { grid-template-columns:1fr; gap:48px; }
+  .program-grid { grid-template-columns:1fr 1fr; }
+  .map-inner { grid-template-columns:1fr; }
+  .schools-grid { grid-template-columns:1fr; }
+  .community-quote-inner { padding:0 24px; }
+}
+@media (max-width:600px) {
+  .program-grid { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body data-page="community">
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-pattern"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-eyebrow">Community & Parish</div>
+    <h1 class="page-hero-title">A parish that<br><em>serves, builds,<br>and grows.</em></h1>
+    <p class="page-hero-sub">Busowa Catholic Parish has been the spiritual and social backbone of this community since 1945 — running schools, health programs, and peace-building initiatives across Bugiri District.</p>
+  </div>
+</div>
+
+<!-- PARISH INTRO -->
+<section class="section" style="background:#fff;" id="parish">
+  <div class="container">
+    <div class="two-col fade-up">
+      <div>
+        <div class="eyebrow">Busowa Catholic Parish</div>
+        <h2 class="section-title">More than a church.<br><em>A community anchor.</em></h2>
+        <p class="lead" style="margin-bottom:20px;">Founded in 1945, Busowa Catholic Parish has never limited its mission to worship alone. From its earliest days, the parish understood that faith without service is incomplete.</p>
+        <p style="font-size:0.95rem;line-height:1.8;color:var(--mid);font-weight:300;margin-bottom:20px;">Over eight decades, the parish has built schools, supported health services, promoted human rights, championed environmental care, and worked tirelessly to reduce poverty in one of Uganda's most underserved regions.</p>
+        <p style="font-size:0.95rem;line-height:1.8;color:var(--mid);font-weight:300;">Today the parish runs three primary schools across Bugiri District — together serving 3,000 learners — with St. Antony Busowa as the flagship institution.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div style="background:var(--cream-dark);aspect-ratio:4/3;border-radius:3px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:0.75rem;letter-spacing:0.1em;">PARISH CHURCH PHOTO</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div style="background:var(--earth);border-radius:3px;padding:24px;text-align:center;">
+            <div style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:#fff;line-height:1;">80+</div>
+            <div style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-top:6px;">Years of service</div>
+          </div>
+          <div style="background:var(--green);border-radius:3px;padding:24px;text-align:center;">
+            <div style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:#fff;line-height:1;">3,000</div>
+            <div style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-top:6px;">Learners across 3 schools</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="section" style="background:var(--cream-dark);">
+  <div class="container">
+    <div style="max-width:580px;margin-bottom:56px;" class="fade-up">
+      <div class="eyebrow">What We Do</div>
+      <h2 class="section-title">Community programs<br><em>beyond the classroom.</em></h2>
+      <p class="lead">The parish's work touches every part of community life — from the schoolroom to the health clinic, from the courtroom to the forest.</p>
+    </div>
+    <div class="program-grid">
+      <div class="program-card fade-up">
+        <div class="program-icon">🎓</div>
+        <div class="program-title">Education</div>
+        <div class="program-text">Three primary schools across Bugiri District, together serving 3,000 learners from Primary 1 through 7. The parish supplements government efforts to ensure every child in the area has access to schooling.</div>
+      </div>
+      <div class="program-card fade-up delay-1">
+        <div class="program-icon">🏥</div>
+        <div class="program-title">Health Support</div>
+        <div class="program-text">Coordinating with district health services to run outreach clinics, maternal health support, and school health screenings for the most vulnerable families in the area.</div>
+      </div>
+      <div class="program-card fade-up delay-2">
+        <div class="program-icon">🕊️</div>
+        <div class="program-title">Peace Building</div>
+        <div class="program-text">Active conflict mediation and inter-community dialogue programs that address ethnic and economic tensions in Bugiri District — promoting stability and social cohesion.</div>
+      </div>
+      <div class="program-card fade-up">
+        <div class="program-icon">🌿</div>
+        <div class="program-title">Environment</div>
+        <div class="program-text">Reforestation campaigns, school garden programs, and environmental education integrating sustainability into the daily lives of students and families across the parish.</div>
+      </div>
+      <div class="program-card fade-up delay-1">
+        <div class="program-icon">⚖️</div>
+        <div class="program-title">Human Rights</div>
+        <div class="program-text">Advocacy for the rights of children, women, and marginalized community members — including access to education, protection from child labour, and freedom from early marriage.</div>
+      </div>
+      <div class="program-card fade-up delay-2">
+        <div class="program-icon">💰</div>
+        <div class="program-title">Poverty Alleviation</div>
+        <div class="program-text">Supporting families in need through school feeding programs, scholastic material assistance, and livelihood training — because a hungry child cannot learn.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY QUOTE -->
+<div class="community-quote">
+  <div class="community-quote-inner fade-up">
+    <p class="cq-text">"The parish has existed for since 1945. For all these years it has been doing social-religious community development work — education, health, peace building, environment, promotion of human rights."</p>
+    <p class="cq-author">— Busowa Catholic Parish · Bugiri District, Uganda</p>
+  </div>
+</div>
+
+<!-- THREE SCHOOLS -->
+<section class="section" style="background:#fff;">
+  <div class="container">
+    <div style="max-width:560px;margin-bottom:56px;" class="fade-up">
+      <div class="eyebrow">The Parish Schools</div>
+      <h2 class="section-title">Three schools.<br><em>One mission.</em></h2>
+      <p class="lead">The parish operates three primary schools in different villages of Bugiri District — each one a pillar of its community.</p>
+    </div>
+    <div class="schools-grid fade-up">
+      <div class="school-card featured">
+        <div class="school-card-top">
+          <div class="school-card-num">01</div>
+          <div class="school-card-name">St. Antony Busowa Primary School</div>
+        </div>
+        <div class="school-card-body">
+          <div class="school-card-detail">
+            The flagship school, serving 1,000 learners with 25 teachers. Located on the Jinja–Tororo Road in Busowa Town-Council. Currently undertaking a four-classroom expansion project.
+          </div>
+        </div>
+      </div>
+      <div class="school-card">
+        <div class="school-card-top">
+          <div class="school-card-num" style="color:var(--green)">02</div>
+          <div class="school-card-name">Parish School — Village 2</div>
+        </div>
+        <div class="school-card-body">
+          <div class="school-card-detail">
+            A second school serving a different village in Bugiri District, providing primary education to community members who would otherwise have no access to schooling.
+          </div>
+        </div>
+      </div>
+      <div class="school-card">
+        <div class="school-card-top">
+          <div class="school-card-num" style="color:var(--amber)">03</div>
+          <div class="school-card-name">Parish School — Village 3</div>
+        </div>
+        <div class="school-card-body">
+          <div class="school-card-detail">
+            A third school completing the parish's network across the district — together the three schools serve a combined total of 3,000 learners.
+          </div>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:28px;font-size:0.83rem;color:var(--muted);font-style:italic;">Names and details of the second and third schools to be updated with actual information.</p>
+  </div>
+</section>
+
+<!-- MAP / LOCATION -->
+<div class="map-band" id="location">
+  <div class="container">
+    <div class="map-inner fade-up">
+      <div>
+        <div class="eyebrow" style="color:var(--amber)">Where We Are</div>
+        <h2 class="section-title light">Find us in<br><em>Eastern Uganda.</em></h2>
+        <div style="margin-top:36px;display:flex;flex-direction:column;gap:0;">
+          <div class="location-item">
+            <div class="location-icon">📍</div>
+            <div>
+              <div class="location-label">Address</div>
+              <div class="location-val">Busowa Town-Council, Bugiri District<br>Eastern Uganda</div>
+            </div>
+          </div>
+          <div class="location-item">
+            <div class="location-icon">🛣️</div>
+            <div>
+              <div class="location-label">Road</div>
+              <div class="location-val">Along the Jinja–Tororo Road<br>Uganda–Kenya Highway</div>
+            </div>
+          </div>
+          <div class="location-item">
+            <div class="location-icon">🗺️</div>
+            <div>
+              <div class="location-label">GPS Coordinates</div>
+              <div class="location-val">0.602977° N, 33.700708° E</div>
+            </div>
+          </div>
+          <div class="location-item">
+            <div class="location-icon">🏙️</div>
+            <div>
+              <div class="location-label">Distance from Kampala</div>
+              <div class="location-val">Approximately 170 kilometres</div>
+            </div>
+          </div>
+          <div class="location-item">
+            <div class="location-icon">✉️</div>
+            <div>
+              <div class="location-label">Contact</div>
+              <div class="location-val">P.O. Box 673, Jinja, Uganda<br>frclakpupa@gmail.com · +256 752 327 344</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="map-placeholder">
+        <div class="map-placeholder-icon">🗺️</div>
+        MAP EMBED<br>
+        <span style="font-size:0.7rem;margin-top:4px;">Replace with Google Maps embed<br>GPS: 0.602977, 33.700708</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+</body>
+</html>

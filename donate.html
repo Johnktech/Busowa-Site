@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support Us | St. Antony Busowa Primary School</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.donate-layout {
+  display:grid; grid-template-columns:1.4fr 1fr;
+  gap:64px; align-items:start;
+}
+
+/* PROJECT DETAIL */
+.project-stat-row {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:16px; margin:36px 0;
+}
+.pstat {
+  background:var(--cream-dark); border-radius:3px;
+  padding:20px 16px; text-align:center;
+  border:1px solid var(--border);
+}
+.pstat-val { font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:900; color:var(--earth); line-height:1; }
+.pstat-label { font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); margin-top:6px; }
+
+/* PHASE LIST */
+.phase-list { display:flex; flex-direction:column; gap:0; }
+.phase-row {
+  display:flex; gap:20px; align-items:flex-start;
+  padding:20px 0; border-bottom:1px solid var(--border);
+}
+.phase-row:last-child { border-bottom:none; }
+.phase-num {
+  width:36px; height:36px; border-radius:50%; flex-shrink:0;
+  background:var(--earth); color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700;
+}
+.phase-num.done { background:var(--green); }
+.phase-body {}
+.phase-name { font-family:'Playfair Display',serif; font-size:0.97rem; font-weight:700; color:var(--dark); margin-bottom:5px; }
+.phase-desc { font-size:0.83rem; line-height:1.65; color:var(--mid); font-weight:300; }
+
+/* BUDGET BARS */
+.budget-list { margin-top:28px; }
+.b-row {
+  display:flex; align-items:center; gap:14px;
+  padding:14px 0; border-bottom:1px solid var(--border);
+}
+.b-row:last-child { border-bottom:none; }
+.b-label { flex:1; font-size:0.85rem; color:var(--dark); }
+.b-bar { flex:1.5; height:5px; background:rgba(0,0,0,0.06); border-radius:3px; overflow:hidden; }
+.b-fill { height:100%; background:var(--earth); border-radius:3px; }
+.b-pct { font-size:0.8rem; font-weight:600; color:var(--earth); min-width:40px; text-align:right; }
+
+/* DONATE STICKY PANEL */
+.donate-panel {
+  position:sticky; top:88px;
+  background:#fff; border-radius:4px;
+  border:1px solid var(--border);
+  overflow:hidden;
+  box-shadow:0 8px 40px rgba(0,0,0,0.06);
+}
+.dp-top {
+  background:var(--earth); padding:32px 28px;
+}
+.dp-top-title {
+  font-family:'Playfair Display',serif;
+  font-size:1.4rem; font-weight:700; color:#fff; margin-bottom:8px; line-height:1.2;
+}
+.dp-top-sub { font-size:0.83rem; color:rgba(255,255,255,0.65); line-height:1.6; }
+.dp-body { padding:28px; }
+.dp-section-title { font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--amber); font-weight:600; margin-bottom:16px; }
+.dp-contact-item {
+  display:flex; gap:12px; margin-bottom:16px; align-items:flex-start;
+}
+.dp-contact-item:last-child { margin-bottom:0; }
+.dp-contact-icon {
+  width:34px; height:34px; background:rgba(139,69,19,0.07);
+  border-radius:2px; display:flex; align-items:center; justify-content:center;
+  font-size:0.9rem; flex-shrink:0;
+}
+.dp-contact-text { font-size:0.83rem; line-height:1.6; color:var(--mid); }
+.dp-contact-text strong { display:block; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--earth); margin-bottom:2px; }
+.dp-contact-text a { color:var(--mid); text-decoration:none; }
+.dp-contact-text a:hover { color:var(--earth); }
+.dp-divider { height:1px; background:var(--border); margin:24px 0; }
+.dp-note { font-size:0.78rem; color:var(--muted); line-height:1.65; }
+.dp-cta-row { padding:0 28px 28px; }
+
+/* WAYS TO HELP */
+.ways-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.way-card {
+  background:var(--cream-dark); border-radius:3px;
+  padding:28px 22px; text-align:center;
+  border:1px solid var(--border); transition:transform 0.2s;
+}
+.way-card:hover { transform:translateY(-3px); }
+.way-icon { font-size:2rem; margin-bottom:14px; }
+.way-title { font-family:'Playfair Display',serif; font-size:0.97rem; font-weight:700; color:var(--dark); margin-bottom:8px; }
+.way-text { font-size:0.82rem; line-height:1.65; color:var(--mid); font-weight:300; }
+
+/* ACCOUNTABILITY BAND */
+.accountability {
+  background:var(--green-dark); padding:72px 0; color:#fff;
+}
+.acc-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:32px; }
+.acc-item { text-align:center; }
+.acc-icon { font-size:1.8rem; margin-bottom:12px; }
+.acc-title { font-family:'Playfair Display',serif; font-size:0.97rem; font-weight:700; color:#fff; margin-bottom:8px; }
+.acc-text { font-size:0.8rem; line-height:1.65; color:rgba(255,255,255,0.55); }
+
+@media (max-width:960px) {
+  .donate-layout { grid-template-columns:1fr; }
+  .donate-panel { position:static; }
+  .ways-grid { grid-template-columns:1fr 1fr; }
+  .acc-grid { grid-template-columns:1fr 1fr; gap:24px; }
+  .project-stat-row { grid-template-columns:1fr 1fr; }
+}
+@media (max-width:600px) {
+  .ways-grid { grid-template-columns:1fr; }
+  .project-stat-row { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body data-page="donate">
+
+<div class="page-hero" style="background:var(--green-dark);">
+  <div class="page-hero-bg" style="background:linear-gradient(135deg, var(--green-dark) 0%, #0d2818 100%);"></div>
+  <div class="page-hero-pattern"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-eyebrow">Support Us</div>
+    <h1 class="page-hero-title">Your gift builds<br><em>a classroom.<br>A future.</em></h1>
+    <p class="page-hero-sub">Help us construct four new classrooms for 280 children. Construction has begun — your donation keeps it moving.</p>
+  </div>
+</div>
+
+<section class="section" id="project">
+  <div class="container">
+    <div class="donate-layout">
+
+      <!-- LEFT: PROJECT DETAIL -->
+      <div>
+        <div class="eyebrow fade-up">The Classroom Project</div>
+        <h2 class="section-title fade-up">Four classrooms.<br><em>Four months.</em><br>280 children.</h2>
+
+        <div class="project-stat-row fade-up">
+          <div class="pstat">
+            <div class="pstat-val">140</div>
+            <div class="pstat-label">Current pupils per class</div>
+          </div>
+          <div class="pstat">
+            <div class="pstat-val">70</div>
+            <div class="pstat-label">Target after project</div>
+          </div>
+          <div class="pstat">
+            <div class="pstat-val">4mo</div>
+            <div class="pstat-label">Construction timeline</div>
+          </div>
+        </div>
+
+        <p style="font-size:0.97rem;line-height:1.8;color:var(--mid);font-weight:300;margin-bottom:20px;" class="fade-up">
+          St. Antony Busowa Primary School was built for 350 pupils — 50 per classroom. Today it serves 1,000 children. In Primary 1 through Primary 4, each classroom holds 142 learners — nearly three times the recommended 55.
+        </p>
+        <p style="font-size:0.97rem;line-height:1.8;color:var(--mid);font-weight:300;margin-bottom:36px;" class="fade-up">
+          Teachers resort to splitting classes and teaching under trees. Individual attention is impossible. This project builds four dedicated classrooms using local materials and local builders — returning quality education to every child.
+        </p>
+
+        <!-- PHASES -->
+        <div class="fade-up">
+          <div class="eyebrow">Construction Phases</div>
+          <div class="phase-list">
+            <div class="phase-row">
+              <div class="phase-num done">1</div>
+              <div class="phase-body">
+                <div class="phase-name">Foundation & Brickwork ✓</div>
+                <div class="phase-desc">Site cleared, foundation laid, brick walls rising. Local materials sourced. Municipal engineer on site.</div>
+              </div>
+            </div>
+            <div class="phase-row">
+              <div class="phase-num">2</div>
+              <div class="phase-body">
+                <div class="phase-name">Roofing & Windows</div>
+                <div class="phase-desc">Roof installation, window frames, and ventilation openings to create well-lit, weather-proof learning spaces.</div>
+              </div>
+            </div>
+            <div class="phase-row">
+              <div class="phase-num">3</div>
+              <div class="phase-body">
+                <div class="phase-name">Plastering, Flooring & Furnishing</div>
+                <div class="phase-desc">Interior finishing, painting, and fitting each classroom with desks, chairs, and blackboards.</div>
+              </div>
+            </div>
+            <div class="phase-row">
+              <div class="phase-num">4</div>
+              <div class="phase-body">
+                <div class="phase-name">Handover & Donor Report</div>
+                <div class="phase-desc">Final inspection, official opening ceremony, and a full narrative, photographic, and financial report delivered to all donors.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BUDGET -->
+        <div style="margin-top:48px;" class="fade-up">
+          <div class="eyebrow">Where Your Money Goes</div>
+          <div class="budget-list">
+            <div class="b-row">
+              <span class="b-label">Construction materials</span>
+              <div class="b-bar"><div class="b-fill" style="width:55%"></div></div>
+              <span class="b-pct">55%</span>
+            </div>
+            <div class="b-row">
+              <span class="b-label">Labour — Shelter Solutions</span>
+              <div class="b-bar"><div class="b-fill" style="width:25%"></div></div>
+              <span class="b-pct">25%</span>
+            </div>
+            <div class="b-row">
+              <span class="b-label">Furniture & fittings</span>
+              <div class="b-bar"><div class="b-fill" style="width:12%"></div></div>
+              <span class="b-pct">12%</span>
+            </div>
+            <div class="b-row">
+              <span class="b-label">Supervision & reporting</span>
+              <div class="b-bar"><div class="b-fill" style="width:8%"></div></div>
+              <span class="b-pct">8%</span>
+            </div>
+          </div>
+          <p style="font-size:0.8rem;color:var(--muted);margin-top:18px;line-height:1.65;">All materials are locally sourced in Uganda. Teacher salaries and per-pupil grants are covered by the Government of Uganda — ensuring the school's long-term sustainability.</p>
+        </div>
+      </div>
+
+      <!-- RIGHT: DONATE PANEL -->
+      <div>
+        <div class="donate-panel fade-up delay-2">
+          <div class="dp-top">
+            <div class="dp-top-title">Get in touch to make a donation</div>
+            <div class="dp-top-sub">Contact us directly and we'll guide you through the giving process and provide full documentation.</div>
+          </div>
+          <div class="dp-body">
+            <div class="dp-section-title">Contact the Project Team</div>
+            <div class="dp-contact-item">
+              <div class="dp-contact-icon">✉️</div>
+              <div class="dp-contact-text">
+                <strong>Email</strong>
+                <a href="mailto:frclakpupa@gmail.com">frclakpupa@gmail.com</a>
+              </div>
+            </div>
+            <div class="dp-contact-item">
+              <div class="dp-contact-icon">📞</div>
+              <div class="dp-contact-text">
+                <strong>Phone / WhatsApp</strong>
+                <a href="tel:+256752327344">+256 752 327 344</a>
+              </div>
+            </div>
+            <div class="dp-contact-item">
+              <div class="dp-contact-icon">📮</div>
+              <div class="dp-contact-text">
+                <strong>Post</strong>
+                Busowa Catholic Church / Kirabo<br>P.O. Box 673, Jinja, Uganda
+              </div>
+            </div>
+            <div class="dp-divider"></div>
+            <div class="dp-section-title">What you'll receive</div>
+            <div class="dp-note">
+              All donors receive a full project report upon completion — including a narrative summary, photographic documentation, and a detailed financial report showing exactly how funds were used. We are happy to follow any donor reporting format.
+            </div>
+          </div>
+          <div class="dp-cta-row">
+            <a href="mailto:frclakpupa@gmail.com?subject=Donation%20Enquiry%20–%20Busowa%20Classroom%20Project&body=Hello%2C%0A%0AI%20am%20interested%20in%20supporting%20the%20Busowa%20classroom%20construction%20project.%20Please%20send%20me%20more%20details.%0A%0AThank%20you." class="btn btn-earth" style="width:100%;justify-content:center;">Send Donation Enquiry</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAYS TO HELP -->
+<section class="section" style="background:var(--cream-dark);">
+  <div class="container">
+    <div style="text-align:center;max-width:560px;margin:0 auto 52px;" class="fade-up">
+      <div class="eyebrow center">Other Ways to Help</div>
+      <h2 class="section-title" style="text-align:center;">Every form of support<br><em>matters here.</em></h2>
+    </div>
+    <div class="ways-grid">
+      <div class="way-card fade-up">
+        <div class="way-icon">💰</div>
+        <div class="way-title">Financial Donation</div>
+        <div class="way-text">Contribute directly to the construction project or to the school's general fund for materials, meals, and scholastic supplies.</div>
+      </div>
+      <div class="way-card fade-up delay-1">
+        <div class="way-icon">🤝</div>
+        <div class="way-title">Partner With Us</div>
+        <div class="way-text">NGOs, faith organizations, and government bodies are welcome to partner formally. We provide full documentation, reporting, and site access.</div>
+      </div>
+      <div class="way-card fade-up delay-2">
+        <div class="way-icon">📢</div>
+        <div class="way-title">Spread the Word</div>
+        <div class="way-text">Share our story with your network. The more people who know about Busowa, the more children benefit — even a small donation changes a child's experience.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCOUNTABILITY BAND -->
+<div class="accountability">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:52px;" class="fade-up">
+      <div class="eyebrow center" style="color:var(--light-green);">Our Commitment to You</div>
+      <h2 class="section-title light" style="text-align:center;">Your trust is<br><em>our responsibility.</em></h2>
+    </div>
+    <div class="acc-grid fade-up">
+      <div class="acc-item">
+        <div class="acc-icon">📸</div>
+        <div class="acc-title">Photo Documentation</div>
+        <div class="acc-text">Regular construction photos shared with donors from groundbreaking to handover ceremony.</div>
+      </div>
+      <div class="acc-item">
+        <div class="acc-icon">📊</div>
+        <div class="acc-title">Financial Report</div>
+        <div class="acc-text">Detailed breakdown of every expenditure provided to donors upon project completion.</div>
+      </div>
+      <div class="acc-item">
+        <div class="acc-icon">🏛️</div>
+        <div class="acc-title">Municipal Oversight</div>
+        <div class="acc-text">All construction supervised by the school building committee and local municipal engineer.</div>
+      </div>
+      <div class="acc-item">
+        <div class="acc-icon">✅</div>
+        <div class="acc-title">Local Materials</div>
+        <div class="acc-text">100% of materials sourced within Uganda — keeping investment inside the community it serves.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+</body>
+</html>
