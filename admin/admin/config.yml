@@ -1,0 +1,81 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "home"
+        label: "🏠 Home Page"
+        file: "index.html"
+        fields:
+          - { label: "Hero Description", name: "hero_desc", widget: "text" }
+          - { label: "Pupils Enrolled", name: "stat_pupils", widget: "string" }
+          - { label: "Number of Teachers", name: "stat_teachers", widget: "string" }
+
+      - name: "about"
+        label: "📖 About Page"
+        file: "about.html"
+        fields:
+          - { label: "Intro Paragraph", name: "intro_1", widget: "text" }
+
+      - name: "community"
+        label: "🤝 Community Page"
+        file: "community.html"
+        fields:
+          - { label: "Parish Description", name: "parish_intro_1", widget: "text" }
+          - { label: "School 2 Name", name: "school2_name", widget: "string" }
+          - { label: "School 3 Name", name: "school3_name", widget: "string" }
+
+      - name: "donate"
+        label: "💛 Support Us Page"
+        file: "donate.html"
+        fields:
+          - { label: "Project Description", name: "project_desc_1", widget: "text" }
+          - { label: "Contact Email", name: "contact_email", widget: "string" }
+          - { label: "Contact Phone", name: "contact_phone", widget: "string" }
+
+  - name: "news"
+    label: "📰 News & Events"
+    folder: "posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Category", name: "category", widget: "select", options: ["Announcement", "Events", "Community", "Construction Project"] }
+      - { label: "Cover Image", name: "image", widget: "image", required: false }
+      - { label: "Summary", name: "summary", widget: "text" }
+      - { label: "Full Story", name: "body", widget: "markdown" }
+
+  - name: "gallery"
+    label: "📷 Gallery Photos"
+    folder: "gallery-posts"
+    create: true
+    fields:
+      - { label: "Caption", name: "title", widget: "string" }
+      - { label: "Photo", name: "image", widget: "image" }
+      - { label: "Album", name: "album", widget: "select", options: ["Classroom Life", "Events & Ceremonies", "Community", "Construction Project", "Sports & Culture"] }
+      - { label: "Date", name: "date", widget: "datetime" }
+
+  - name: "events"
+    label: "📅 Upcoming Events"
+    folder: "events"
+    create: true
+    fields:
+      - { label: "Event Name", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Description", name: "description", widget: "text" }
+
+  - name: "notices"
+    label: "📌 School Notices"
+    folder: "notices"
+    create: true
+    fields:
+      - { label: "Notice Title", name: "title", widget: "string" }
+      - { label: "Notice Text", name: "body", widget: "text" }
+      - { label: "Date", name: "date", widget: "datetime" }
